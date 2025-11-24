@@ -139,15 +139,41 @@
         
         .music-control:hover { opacity: 1; }
 
+                /* --- AIRPLANE STYLES --- */
+        .airplane-container {
+            position: absolute;
+            top: 10%; /* Height in the sky */
+            left: -40%; /* Start off-screen to the left */
+            z-index: 5; /* Behind the text, but above the mountains */
+            opacity: 0.8;
+            transform: rotate(4deg); /* Slight climb angle */
+            pointer-events: none;
+            
+            /* This sets up the movement physics */
+            transition: left 12s linear, top 12s linear, opacity 2s ease-in;
+        }
+
+        /* The class we will add via JS to trigger the flight */
+        .airplane-fly {
+            left: 110%; /* Fly off-screen to the right */
+            top: 15%;   /* Slight altitude gain */
+        }
+
     </style>
 </head>
 <body>
 
-    <audio id="bg-music" loop>
-        <source src="./music/dolomite_landing_song.mp3" type="audio/mpeg">
-    </audio>
+        <audio id="bg-music" loop>
+            <source src="./music/dolomite_landing_song.mp3" type="audio/mpeg">
+        </audio>
 
-    <div class="hero">
+        <div class="hero">
+            <div id="airplane" class="airplane-container">
+            <div id="airplane" class="airplane-container">
+                <img src="./images/plane.png" alt="Airplane flying towards Italy">
+            </div>
+        </div>
+        
         <div class="bg-image"></div>
         
         <div class="overlay"></div>
@@ -195,9 +221,12 @@
             // 3. Show music toggle
             musicIcon.style.display = "block";
 
+            const plane = document.getElementById('airplane');
+    
             // 4. Optional: Scroll down or reveal next section
             // For now, we just let the music start and the button fade out
             setTimeout(() => {
+                plane.classList.add('airplane-fly');
                 // If you add a second section below, use:
                 // document.getElementById('next-section').scrollIntoView({behavior: 'smooth'});
             }, 1000);
