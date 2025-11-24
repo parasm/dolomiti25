@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julie & Paras | The Italian Adventure</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & BASE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; overflow: hidden; font-family: 'Lato', sans-serif; color: white; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        /* The Background Image (Dolomites) */
+        .bg-image {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* Placeholder image of snowy Dolomites. Replace URL with your own image path later */
+            background: url('./images/francesco-vantini-keVWpGYNEcc-unsplash.jpg') no-repeat center center/cover;
+            z-index: 1;
+        }
+
+        /* Overlay to darken image slightly for text readability */
+        .overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        /* --- FOG ANIMATION --- */
+        /* We use a transparent fog texture and repeat it horizontally */
+        .fog-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 3;
+            overflow: hidden;
+            pointer-events: none; /* Let clicks pass through */
+        }
+
+        .fog-img {
+            position: absolute;
+            height: 100vh;
+            width: 300vw; /* Extra wide for scrolling */
+            z-index: 1;
+            opacity: 0.6;
+            /* Generic fog texture URL */
+            background: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog1.png') repeat-x;
+            background-size: contain;
+            animation: fog linear infinite;
+        }
+
+        .fog-img-2 {
+            z-index: 2;
+            opacity: 0.4;
+            background: url('https://raw.githubusercontent.com/danielstuart14/CSS_FOG_ANIMATION/master/fog2.png') repeat-x;
+            background-size: contain;
+            animation: fog linear infinite;
+            animation-duration: 40s; /* Different speed for depth */
+        }
+
+        @keyframes fog {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-200vw, 0, 0); }
+        }
+
+        /* --- CONTENT --- */
+        .content {
+            z-index: 10;
+            text-align: center;
+            opacity: 0; /* Hidden initially for fade-in effect */
+            transform: translateY(20px);
+            transition: opacity 2s ease, transform 2s ease;
+        }
+
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+            letter-spacing: 5px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        /* --- INTERACTIVE BUTTON --- */
+        .enter-btn {
+            padding: 15px 40px;
+            border: 1px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .enter-btn:hover {
+            background: white;
+            color: #1a1a1a;
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
+        }
+
+        /* --- MUSIC CONTROL (Hidden initially) --- */
+        .music-control {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            z-index: 20;
+            cursor: pointer;
+            display: none; /* Shows after entering */
+            opacity: 0.7;
+        }
+        
+        .music-control:hover { opacity: 1; }
+
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="./music/dolomite_landing_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hero">
+        <div class="bg-image"></div>
+        
+        <div class="overlay"></div>
+
+        <div class="fog-container">
+            <div class="fog-img" style="animation-duration: 60s;"></div>
+            <div class="fog-img fog-img-2"></div>
+        </div>
+
+        <div class="content" id="main-content">
+            <h1>The Snowy Mountain Ascent</h1>
+            <p>Paras Modi x Julie Patel</p>
+            <button class="enter-btn" onclick="enterSite()">Begin the Journey</button>
+        </div>
+
+        <div class="music-control" id="music-toggle" onclick="toggleMusic()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+        </div>
+    </div>
+
+    <script>
+        // Fade text in on load
+        window.onload = function() {
+            const content = document.getElementById('main-content');
+            content.style.opacity = '1';
+            content.style.transform = 'translateY(0)';
+        };
+
+        const audio = document.getElementById('bg-music');
+        const btn = document.querySelector('.enter-btn');
+        const musicIcon = document.getElementById('music-toggle');
+
+        // Function to handle the "Enter" interaction
+        function enterSite() {
+            // 1. Play Audio (Browser allows this because user clicked)
+            audio.play().catch(error => {
+                console.log("Audio play failed (interaction policy):", error);
+            });
+
+            // 2. Change Button Text to something unrelated or hide it
+            btn.innerHTML = "The aventure has not begun not yet, please come back.";
+            // btn.style.pointerEvents = "none";
+            btn.style.opacity = "1";
+
+            // 3. Show music toggle
+            musicIcon.style.display = "block";
+
+            // 4. Optional: Scroll down or reveal next section
+            // For now, we just let the music start and the button fade out
+            setTimeout(() => {
+                // If you add a second section below, use:
+                // document.getElementById('next-section').scrollIntoView({behavior: 'smooth'});
+            }, 1000);
+        }
+
+        // Toggle Mute/Play
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                musicIcon.style.opacity = "1";
+            } else {
+                audio.pause();
+                musicIcon.style.opacity = "0.5";
+            }
+        }
+    </script>
+</body>
+</html>
