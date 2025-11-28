@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Adventure | Julie & Paras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CORE SETTINGS --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background-color: #000;
+            color: white;
+            overflow: hidden; 
+        }
+
+        /* --- GLOBAL SNOW ENGINE --- */
+        #global-snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Let clicks pass through */
+            z-index: 15; /* sits above backgrounds, below text */
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0); }
+            100% { transform: translateY(110vh) translateX(20px); }
+        }
+
+        /* --- SCROLL SNAP CONTAINER --- */
+        main {
+            height: 100vh;
+            height: 100dvh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        section {
+            height: 100vh;
+            height: 100dvh;
+            width: 100vw;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- CONTENT BOXES --- */
+        .content-box {
+            z-index: 20; /* Higher than snow */
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            padding: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            max-width: 80%;
+            opacity: 0; 
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        h2 { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+        p { font-size: 1.2rem; letter-spacing: 1px; line-height: 1.6; }
+        .date-tag { display: inline-block; background: #d4af37; color: black; padding: 5px 10px; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; }
+
+        section.active .content-box { opacity: 1; transform: translateY(0); }
+
+
+        /* =========================================
+           SECTION 1: THE FLIGHT
+           ========================================= */
+        #section-flight {
+            background: linear-gradient(to bottom, #001f3f, #4a69bd);
+        }
+
+        .cloud {
+            position: absolute; background: rgba(255,255,255,0.2); border-radius: 50%;
+            filter: blur(20px);
+        }
+        .c1 { width: 300px; height: 100px; top: 20%; left: -100px; animation: cloudFloat 40s linear infinite; }
+        .c2 { width: 400px; height: 150px; bottom: 10%; right: -150px; animation: cloudFloat 30s linear infinite reverse; }
+
+        @keyframes cloudFloat { 0% { transform: translateX(0); } 100% { transform: translateX(20px); } }
+
+        .plane-track { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
+        .plane-img {
+            position: absolute; width: 120px; top: 40%; left: -150px; 
+            transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        #section-flight.active .plane-img { transform: translateX(50vw) rotate(5deg); }
+
+
+        /* =========================================
+           SECTION 2: FORESTIS (The Freeze)
+           ========================================= */
+        #section-forestis {
+            background: url('./images/forestis_dolomites.jpg') center/cover no-repeat;
+        }
+
+        .frost-frame {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.8);
+            transition: box-shadow 3s ease-in-out;
+            z-index: 5; pointer-events: none;
+        }
+
+        .snow-pile {
+            position: absolute; bottom: -100px; left: 0; width: 100%; height: 150px;
+            background: linear-gradient(to top, white 20%, transparent 100%);
+            transition: bottom 2s ease-out; z-index: 6;
+        }
+
+        #section-forestis.active .frost-frame { box-shadow: inset 0 0 100px 20px rgba(255, 255, 255, 0.6); }
+        #section-forestis.active .snow-pile { bottom: 0; }
+
+
+        .skier-container {
+            position: absolute; top: -100px; left: -100px; z-index: 8; font-size: 4rem;
+        }
+
+        @keyframes skiDown {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(30vw, 20vh) rotate(-10deg); }
+            50% { transform: translate(50vw, 50vh) rotate(10deg); }
+            100% { transform: translate(120vw, 120vh) rotate(0deg); }
+        }
+
+        #section-chalet.active .skier-container {
+            animation: skiDown 4s linear forwards; animation-delay: 0.5s;
+        }
+        
+        .back-nav {
+            position: fixed; top: 20px; left: 20px; z-index: 100;
+            color: white; text-decoration: none; font-size: 1.5rem; opacity: 0.7;
+        }
+
+        /* =========================================
+           SECTION 1: THE FLIGHT (Updated with Image)
+           ========================================= */
+        #section-flight {
+            /* Replace with: url('./images/plane-window.jpg') */
+            background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2674&auto=format&fit=crop') center/cover no-repeat;
+            /* Darken image slightly so text pops */
+            box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.3);
+        }
+
+        /* Keep cloud/plane animations the same... */
+        .cloud { position: absolute; background: rgba(255,255,255,0.2); border-radius: 50%; filter: blur(20px); }
+        .c1 { width: 300px; height: 100px; top: 20%; left: -100px; animation: cloudFloat 40s linear infinite; }
+        .c2 { width: 400px; height: 150px; bottom: 10%; right: -150px; animation: cloudFloat 30s linear infinite reverse; }
+        @keyframes cloudFloat { 0% { transform: translateX(0); } 100% { transform: translateX(20px); } }
+        .plane-track { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; }
+        .plane-img { position: absolute; width: 120px; top: 40%; left: -150px; transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        #section-flight.active .plane-img { transform: translateX(50vw) rotate(5deg); }
+
+
+        /* =========================================
+           SECTION 2: FORESTIS (Already had image, kept logic)
+           ========================================= */
+        #section-forestis {
+            background: url('./images/forestis_dolomites.jpg') center/cover no-repeat;
+        }
+        /* Keep frost/snow pile CSS same as before... */
+        .frost-frame { position: absolute; top: 0; left: 0; width: 100%; height: 100%; box-shadow: inset 0 0 0 0 rgba(255, 255, 255, 0.8); transition: box-shadow 3s ease-in-out; z-index: 5; pointer-events: none; }
+        .snow-pile { position: absolute; bottom: -100px; left: 0; width: 100%; height: 150px; background: linear-gradient(to top, white 20%, transparent 100%); transition: bottom 2s ease-out; z-index: 6; }
+        #section-forestis.active .frost-frame { box-shadow: inset 0 0 100px 20px rgba(255, 255, 255, 0.6); }
+        #section-forestis.active .snow-pile { bottom: 0; }
+
+
+        /* =========================================
+           SECTION 3: SKI CHALET (Already had image)
+           ========================================= */
+        #section-chalet {
+            background: url('./images/michalet.jpg') center/cover no-repeat;
+        }
+        /* Keep skier CSS same as before... */
+        .skier-container { position: absolute; top: -100px; left: -100px; z-index: 8; font-size: 4rem; }
+        @keyframes skiDown { 0% { transform: translate(0, 0) rotate(0deg); } 20% { transform: translate(30vw, 20vh) rotate(-10deg); } 50% { transform: translate(50vw, 50vh) rotate(10deg); } 100% { transform: translate(120vw, 120vh) rotate(0deg); } }
+        #section-chalet.active .skier-container { animation: skiDown 4s linear forwards; animation-delay: 0.5s; }
+
+
+        /* =========================================
+           SECTION 4: MILAN (New!)
+           ========================================= */
+        #section-milan {
+            /* High fashion street vibe */
+            background: url('./images/milan_terrace.jpg') center/cover no-repeat;
+        }
+
+        /* Animation: Flashbulbs (Paparazzi Effect) */
+        .flash-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: white; opacity: 0; pointer-events: none; z-index: 10;
+        }
+        
+        @keyframes paparazzi {
+            0%, 100% { opacity: 0; }
+            10% { opacity: 0.8; } 12% { opacity: 0; } /* Flash 1 */
+            40% { opacity: 0.6; } 42% { opacity: 0; } /* Flash 2 */
+            70% { opacity: 0.9; } 72% { opacity: 0; } /* Flash 3 */
+        }
+
+        #section-milan.active .flash-overlay {
+            animation: paparazzi 2s ease-out forwards;
+        }
+
+
+        /* =========================================
+           SECTION 5: Escapades (New!)
+           ========================================= */
+        #section-escapades {
+            /* Warm terracotta / food vibe */
+            background: url('./images/adventure.avif') center/cover no-repeat;
+            /* Start Grayscale, fade to color */
+            filter: grayscale(100%) sepia(50%);
+            transition: filter 3s ease;
+        }
+
+        #section-escapades.active {
+            filter: grayscale(0%) sepia(0%);
+        }
+
+        /* Falling Pasta or Leaves Icon */
+        .food-icon {
+            position: absolute; font-size: 3rem; opacity: 0;
+            top: -50px; left: 50%;
+            transition: top 2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s;
+        }
+        
+        #section-escapades.active .food-icon {
+            top: 20%; opacity: 1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="global-snow"></div>
+
+    <a href="index.html" class="back-nav">← Back</a>
+
+    <main id="scroller">
+        
+        <section id="section-flight">
+            <div class="cloud c1"></div>
+            <div class="cloud c2"></div>
+            <div class="plane-track"><img src="./images/plane.png" class="plane-img" alt="Plane"></div>
+            <div class="content-box">
+                <span class="date-tag">Nov 29</span>
+                <h2>Taking Flight</h2>
+                <p>Newark -> Milan. Flying towards our next chapter.</p>
+            </div>
+        </section>
+
+        <section id="section-forestis">
+            <div class="frost-frame"></div>
+            <div class="snow-pile"></div>
+            <div class="content-box">
+                <span class="date-tag">Nov 30 - Dec 02</span>
+                <h2>Forestis Dolomites</h2>
+                <p>A sanctuary in the clouds. Spa days, altitude, and pure silence.</p>
+            </div>
+        </section>
+
+        <section id="section-chalet">
+            <div class="skier-container">⛷️</div>
+            <div class="content-box">
+                <span class="date-tag">Dec 03</span>
+                <h2>Alpine Adventure</h2>
+                <p>A private trip to the slopes. Hot chocolate, snowy peaks, and experiencing nature.</p>
+            </div>
+        </section>
+
+        <section id="section-milan">
+            <div class="flash-overlay"></div> <div class="content-box">
+                <span class="date-tag">Dec 04 - Dec 07</span>
+                <h2>Milano</h2>
+                <p>High fashion, Duomo di Milano, and luxury shopping on Via Montenapoleone.</p>
+            </div>
+        </section>
+
+        <section id="section-escapades">
+            <div class="food-icon">🍝</div> <div class="content-box">
+                <span class="date-tag">Dec 08 - Dec 10</span>
+                <h2>Escapades</h2>
+                <p>Adventures into neighboring cities! Bologana, Verona, Bergamo, and so much more!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // 1. SNOW GENERATOR
+        const snowContainer = document.getElementById('global-snow');
+        
+        function createSnowflake() {
+            const flake = document.createElement('div');
+            flake.classList.add('snowflake');
+            
+            // Randomize styling
+            const size = Math.random() * 5 + 2 + 'px'; // 2px to 7px
+            flake.style.width = size;
+            flake.style.height = size;
+            
+            flake.style.left = Math.random() * 100 + 'vw'; // Random horizontal start
+            
+            const duration = Math.random() * 3 + 4 + 's'; // 4s to 7s fall time
+            flake.style.animationDuration = duration;
+            
+            flake.style.opacity = Math.random() * 0.5 + 0.3; // Random opacity
+            
+            snowContainer.appendChild(flake);
+            
+            // Cleanup flake after animation ends to prevent memory leaks
+            setTimeout(() => {
+                flake.remove();
+            }, parseFloat(duration) * 1000);
+        }
+
+        // Create a new flake every 100ms
+        setInterval(createSnowflake, 10);
+
+
+        // 2. SCROLL ANIMATION (Intersection Observer)
+        const options = { threshold: 0.5 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                     entry.target.classList.remove('active');
+                }
+            });
+        }, options);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
