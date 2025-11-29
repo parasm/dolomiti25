@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Chalet Adventure | Julie & Paras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SHARED STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background-color: #111; 
+            color: #eee; 
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .back-link { color: #d4af37; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: white; }
+
+        /* --- HERO HEADER --- */
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            /* Chalet / Cozy Winter Background */
+            background: linear-gradient(to bottom, rgba(26,26,26,0.6), #111), url('https://images.unsplash.com/photo-1517173928238-662580dfcb2d?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: white; margin-bottom: 10px; }
+        .subtitle { color: #d4af37; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- ACTIVITY GRID --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        
+        .day-header {
+            text-align: center;
+            margin: 20px 0 40px;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .activity-item {
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid #d4af37; /* Gold accent */
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .activity-item:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
+
+        .activity-item h2 { font-family: 'Cinzel', serif; margin-bottom: 10px; color: white; font-size: 1.4rem; }
+        .activity-meta { font-size: 0.85rem; color: #aaa; margin-bottom: 15px; font-style: italic; display: flex; gap: 15px; }
+        
+        .tag { background: #333; padding: 2px 8px; border-radius: 4px; color: white; font-size: 0.75rem; border: 1px solid #444; }
+        .tag.gold { border-color: #d4af37; color: #d4af37; }
+        
+        p { color: #ddd; font-size: 0.95rem; }
+
+        /* Special highlight for the lunch to sell the "dressing up" part */
+        .highlight-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0,0,0,0));
+            border-left: 3px solid #fff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="itinerary.html" class="back-link">← Back to Timeline</a>
+    </nav>
+
+    <header>
+        <h1>Alpine Luxury</h1>
+        <p class="subtitle">Wednesday, December 03</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="day-header">Cozy Chalet</div>
+
+        <div class="activity-item">
+            <h2>Morning Glow & Prep</h2>
+            <div class="activity-meta">
+                <span class="tag">09:00 - 11:00</span>
+                <span class="tag">Forestis Spa</span>
+            </div>
+            <p>A relaxing start to the morning. Includes a reserved hair appointment and light spa treatment to ensure we look our best for our special lunch reservation today.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Private Transfer to Alta Badia</h2>
+            <div class="activity-meta">
+                <span class="tag">11:30</span>
+                <span class="tag">Transport</span>
+            </div>
+            <p>A scenic drive through the Dolomite passes. Leaving Forestis and heading towards the spectacular peaks of Alta Badia.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Chalet Arrival</h2>
+            <div class="activity-meta">
+                <span class="tag">12:30</span>
+                <span class="tag">Check-in</span>
+            </div>
+            <p>Dropping our bags at our private chalet. A moment to freshen up and change before lunch.</p>
+        </div>
+
+        <div class="activity-item highlight-card">
+            <h2>A 3 Star Lunch</h2>
+            <div class="activity-meta">
+                <span class="tag gold">13:30</span>
+                <span class="tag gold">Fine Dining</span>
+                <span class="tag">Short Drive</span>
+            </div>
+            <p>A culinary journey at one of the region's most celebrated Michelin-starred restaurants. An exquisite tasting menu celebrating the flavors of the mountains.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Sunset Ski Session</h2>
+            <div class="activity-meta">
+                <span class="tag">15:30 - 17:00</span>
+                <span class="tag">Adventure</span>
+                <span class="tag">Slopes</span>
+            </div>
+            <p>After lunch, we hit the slopes for a magical sunset ski session. We'll explore the panoramic run with views of the Marmolada glacier as the sun turns the mountains pink (Enrosadira).</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Après-Ski & Celebration</h2>
+            <div class="activity-meta">
+                <span class="tag">18:00</span>
+                <span class="tag">Relax</span>
+            </div>
+            <p>Unwinding back at the chalet with champagne and firelight.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milan City Guide | Julie & Paras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SHARED STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background-color: #111; 
+            color: #eee; 
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .back-link { color: #d4af37; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: white; }
+
+        /* --- HERO HEADER --- */
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            /* Milan Cathedral / Galleria Background */
+            background: linear-gradient(to bottom, rgba(26,26,26,0.6), #111), url('https://images.unsplash.com/photo-1552858178-5a415b3c5354?q=80&w=2670&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: white; margin-bottom: 10px; }
+        .subtitle { color: #d4af37; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; font-weight: bold; }
+
+        /* --- ACTIVITY GRID --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        
+        .day-header {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: white;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .activity-item {
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid #d4af37; /* Gold accent */
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease;
+        }
+        .activity-item:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
+
+        .activity-item h2 { font-family: 'Cinzel', serif; margin-bottom: 10px; color: white; font-size: 1.3rem; }
+        .activity-meta { font-size: 0.85rem; color: #aaa; margin-bottom: 15px; font-style: italic; display: flex; gap: 15px; }
+        
+        .tag { background: #333; padding: 2px 8px; border-radius: 4px; color: white; font-size: 0.75rem; border: 1px solid #444; }
+        .tag.gold { border-color: #d4af37; color: #d4af37; }
+        
+        p { color: #ddd; font-size: 0.95rem; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="itinerary.html" class="back-link">← Back to Timeline</a>
+    </nav>
+
+    <header>
+        <h1>Milano Fashion & Culture</h1>
+        <p class="subtitle">Dec 04 - Dec 06</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="day-header">Thursday, Dec 04 • Arrival & Duomo</div>
+
+        <div class="activity-item">
+            <h2>Arrival & Check-in</h2>
+            <div class="activity-meta">
+                <span class="tag">14:00</span>
+                <span class="tag">Luxury Suite</span>
+            </div>
+            <p>Arriving from the mountains by train. Checking into our hotel to freshen up and switch from ski gear to city chic.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Christmas Market at the Duomo</h2>
+            <div class="activity-meta">
+                <span class="tag">16:30</span>
+                <span class="tag">Culture</span>
+                <span class="tag">Piazza del Duomo</span>
+            </div>
+            <p>Strolling beneath the illuminated cathedral. Exploring the traditional wooden huts offering Italian Christmas treats, ornaments, and gifts.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Dinner at Seta**</h2>
+            <div class="activity-meta">
+                <span class="tag gold">20:00</span>
+                <span class="tag gold">2 Michelin Stars</span>
+                <span class="tag">Mandarin Oriental</span>
+            </div>
+            <p>An elegant welcome to Milanese dining. Chef Antonio Guida’s modern Italian cuisine in a stunning courtyard setting.</p>
+        </div>
+        
+        <div class="activity-item">
+            <h2>Camparino in Galleria</h2>
+            <div class="activity-meta">
+                <span class="tag">22:30</span>
+                <span class="tag">Cocktails</span>
+                <span class="tag">Historic</span>
+            </div>
+            <p>Ending the night with a classic Negroni or Campari Seltz at this legendary bar right inside the Galleria Vittorio Emanuele II.</p>
+        </div>
+
+
+        <div class="day-header">Friday, Dec 05 • The Shopping Spree</div>
+
+        <div class="activity-item">
+            <h2>Quadrilatero della Moda</h2>
+            <div class="activity-meta">
+                <span class="tag gold">10:30 - 15:00</span>
+                <span class="tag gold">Shopping Spree</span>
+                <span class="tag">Via Montenapoleone</span>
+            </div>
+            <p>The main event. A dedicated shopping day through the Golden Quadrangle. Visiting flagship boutiques: Prada, Gucci, Versace, and hidden gems.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Armani/Silos</h2>
+            <div class="activity-meta">
+                <span class="tag">16:00</span>
+                <span class="tag">Fashion Museum</span>
+            </div>
+            <p>Exploring the exhibition space dedicated to Giorgio Armani’s professional experience, featuring 40 years of timeless fashion history.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Aperitivo at Ceresio 7</h2>
+            <div class="activity-meta">
+                <span class="tag">18:30</span>
+                <span class="tag">Rooftop Lounge</span>
+                <span class="tag">Views</span>
+            </div>
+            <p>Sunset drinks by the poolside on this glamorous rooftop with 360-degree views of the Milan skyline.</p>
+        </div>
+        
+        <div class="activity-item">
+            <h2>Dinner at Langosteria</h2>
+            <div class="activity-meta">
+                <span class="tag gold">21:00</span>
+                <span class="tag gold">Fine Dining</span>
+                <span class="tag">Seafood</span>
+            </div>
+            <p>The city's most fashionable seafood restaurant. A lively, chic atmosphere perfect for a Friday night celebration.</p>
+        </div>
+
+
+        <div class="day-header">Saturday, Dec 06 • Art & Departure Prep</div>
+
+        <div class="activity-item">
+            <h2>Pinacoteca di Brera</h2>
+            <div class="activity-meta">
+                <span class="tag">10:00</span>
+                <span class="tag">Museum</span>
+                <span class="tag">Art</span>
+            </div>
+            <p>A morning dedicated to Italian Renaissance art in the beautiful Brera district. Seeing masterpieces by Raphael and Caravaggio.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Lunch & Last Stroll in Brera</h2>
+            <div class="activity-meta">
+                <span class="tag">13:00</span>
+                <span class="tag">Casual Chic</span>
+            </div>
+            <p>Wandering the cobblestone streets of the artist's quarter, grabbing a risotto alla milanese, and picking up final souvenirs.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Fondazione Prada</h2>
+            <div class="activity-meta">
+                <span class="tag">15:30</span>
+                <span class="tag">Contemporary Art</span>
+                <span class="tag">Architecture</span>
+            </div>
+            <p>Visiting the iconic contemporary art complex designed by OMA. A perfect blend of fashion, architecture, and art.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Farewell Cocktails: The Doping Club</h2>
+            <div class="activity-meta">
+                <span class="tag">18:00</span>
+                <span class="tag">Speakeasy</span>
+                <span class="tag">Mixology</span>
+            </div>
+            <p>A moody, vintage-inspired lounge to toast to an incredible trip before our final dinner.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

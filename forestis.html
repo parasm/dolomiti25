@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forestis Activities | Julie & Paras</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- SHARED STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Lato', sans-serif; 
+            background-color: #111; 
+            color: #eee; 
+            line-height: 1.6;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .back-link { color: #d4af37; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: white; }
+
+        /* --- HERO HEADER --- */
+        header {
+            padding: 80px 20px;
+            text-align: center;
+            /* Forestis / Dolomites Background */
+            background: linear-gradient(to bottom, rgba(26,26,26,0.8), #111), url('https://images.unsplash.com/photo-1518182170546-0766ce6fec56?q=80&w=2574&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+        h1 { font-family: 'Cinzel', serif; font-size: 2.5rem; color: white; margin-bottom: 10px; }
+        .subtitle { color: #ccc; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
+
+        /* --- ACTIVITY GRID --- */
+        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
+        
+        .day-header {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: #d4af37;
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .activity-item {
+            background: rgba(255,255,255,0.05);
+            border-left: 3px solid #d4af37; /* Gold accent */
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease;
+        }
+        .activity-item:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
+
+        .activity-item h2 { font-family: 'Cinzel', serif; margin-bottom: 10px; color: white; font-size: 1.3rem; }
+        .activity-meta { font-size: 0.85rem; color: #aaa; margin-bottom: 15px; font-style: italic; display: flex; gap: 15px; }
+        
+        .tag { background: #333; padding: 2px 8px; border-radius: 4px; color: white; font-size: 0.75rem; }
+        
+        p { color: #ddd; font-size: 0.95rem; }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="itinerary.html" class="back-link">← Back to Timeline</a>
+    </nav>
+
+    <header>
+        <h1>Forestis Dolomites</h1>
+        <p class="subtitle">Regeneration, Culinary & Christmas Magic</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="day-header">Sunday, Nov 30 • Arrival & Unwind</div>
+
+        <div class="activity-item">
+            <h2>Arrival & Check-in</h2>
+            <div class="activity-meta"><span class="tag">Logistics</span> <span class="tag">Afternoon</span></div>
+            <p>Arriving at our sanctuary in the clouds. Settle into the suite and acclimatize to the altitude and silence.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Sunset Sauna Ritual</h2>
+            <div class="activity-meta">
+                <span class="tag">17:00 & 18:00</span>
+                <span class="tag">Spa</span>
+            </div>
+            <p>A guided infusion ritual in the sauna to release travel tension and clear the mind.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Evening Meditation</h2>
+            <div class="activity-meta">
+                <span class="tag">19:00</span>
+                <span class="tag">Mindfulness</span>
+            </div>
+            <p>A guided session in the Wyda Room to ground ourselves before the adventure begins.</p>
+        </div>
+
+
+        <div class="day-header">Monday, Dec 01 • Christmas Markets</div>
+
+        <div class="activity-item">
+            <h2>Morning Pilates</h2>
+            <div class="activity-meta">
+                <span class="tag">08:00 - 08:45</span>
+                <span class="tag">Active</span>
+            </div>
+            <p>Start the day with movement to wake up the body before our day trip.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Bressanone Christmas Market</h2>
+            <div class="activity-meta">
+                <span class="tag">10:00 - 15:00</span>
+                <span class="tag">Excursion</span>
+            </div>
+            <p>Private transfer to the magical Bressanone Christmas Market. Mulled wine, local crafts, and festive atmosphere in the cathedral square.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Wine Tasting</h2>
+            <div class="activity-meta">
+                <span class="tag">15:00 - 16:30</span>
+                <span class="tag">Culinary</span>
+            </div>
+            <p>A journey through the region's best wines hosted by the Forestis sommelier.</p>
+        </div>
+
+
+        <div class="day-header">Tuesday, Dec 02 • Spa & Culinary Day</div>
+
+        <div class="activity-item">
+            <h2>Traditional South Tyrolean Cooking Class</h2>
+            <div class="activity-meta">
+                <span class="tag">11:00 - 13:00</span>
+                <span class="tag">Culinary</span>
+            </div>
+            <p>Learn the secrets of local dumplings and pastries in this hands-on class.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Wyda Walk</h2>
+            <div class="activity-meta">
+                <span class="tag">10:30 - 12:30</span>
+                <span class="tag">Nature</span>
+                <span class="tag">Meeting Point: Reception</span>
+            </div>
+            <p>Forest bathing and breathing exercises in the snowy woods, inspired by Celtic yoga traditions.</p>
+        </div>
+
+        <div class="activity-item">
+            <h2>Spa & Relaxation</h2>
+            <div class="activity-meta">
+                <span class="tag">Afternoon</span>
+                <span class="tag">Regeneration</span>
+            </div>
+            <p>Full access to the indoor/outdoor pool and silence rooms. Preparing for our next adventures</p>
+        </div>
+        
+        <div class="activity-item">
+            <h2>Sunset Wyda Breath</h2>
+            <div class="activity-meta">
+                <span class="tag">19:00</span>
+                <span class="tag">Mindfulness</span>
+            </div>
+            <p>Evening breathing session to close the day.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

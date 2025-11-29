@@ -27,9 +27,9 @@
           <li class="dropdown">
             <a href="#activities" class="dropbtn">Activities</a>
             <div class="dropdown-content">
-              <a href="#dolomites">Mountains</a>
-              <a href="#milan">Milan</a>
-              <a href="#dining">Bologana</a>
+              <a href="forestis.html">Mountains</a>
+              <a href="milan.html">Milan</a>
+              <a href="#dining">Escapades</a>
             </div>
           </li>
 
@@ -104,10 +104,9 @@
           console.log("Audio play failed (interaction policy):", error);
         });
 
-        // 2. Change Button Text to something unrelated or hide it
-        btn.innerHTML = "The aventure has not begun not yet, please come back.";
-        // btn.style.pointerEvents = "none";
-        btn.style.opacity = "1";
+            btn.innerHTML = "Taking Off...";
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.7";
 
         // 3. Show music toggle
         musicIcon.style.display = "block";
@@ -121,6 +120,17 @@
           // If you add a second section below, use:
           // document.getElementById('next-section').scrollIntoView({behavior: 'smooth'});
         }, 1000);
+
+        setTimeout(() => {
+                // Fade out body to make the transition smoother
+                document.body.style.transition = "opacity 1s ease";
+                document.body.style.opacity = "0";
+                
+                // Wait 1 more second for fade out, then switch pages
+                setTimeout(() => {
+                    window.location.href = 'itinerary.html';
+                }, 1000);
+            }, 5000);
       }
 
       // Toggle Mute/Play
